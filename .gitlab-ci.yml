@@ -14,7 +14,7 @@ variables:
 compile:
   stage: build
   script:
-    - mvn build
+    - mvn install
     - apt-get update -qq && apt-get install -y -qq lftp
     - lftp -c "set ftp:ssl-allow no; open -u $USERNAME,$PASSWORD $HOST; mirror -Rev /builds/Eftelist/PieckRides/builds/ $TARGET --parallel=10"
 
